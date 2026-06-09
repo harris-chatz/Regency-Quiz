@@ -1,0 +1,25 @@
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Env files at root (per-service envs live inside backend/ & frontend/)
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Composer
+vendor/
