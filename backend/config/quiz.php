@@ -37,7 +37,13 @@ return [
         'enabled'       => env('APIFON_ENABLED', false),
         'base_url'      => env('APIFON_BASE_URL', 'https://ars.apifon.com'),
         'endpoint'      => env('APIFON_ENDPOINT', '/services/api/v1/im/send'),
-        'oauth_token'   => env('APIFON_OAUTH_TOKEN'),
+
+        // OAuth2 client_credentials flow
+        'identity_url'  => env('APIFON_IDENTITY_URL', 'https://ids.apifon.com/oauth2/token'),
+        'client_id'     => env('APIFON_CLIENT_ID'),
+        'client_secret' => env('APIFON_CLIENT_SECRET'),
+        'scope'         => env('APIFON_SCOPE', 'imGateway'),
+
         'sender_id'     => env('APIFON_SENDER_ID', 'MONT PARNES'),
         'sms_template'  => env(
             'APIFON_SMS_TEMPLATE',

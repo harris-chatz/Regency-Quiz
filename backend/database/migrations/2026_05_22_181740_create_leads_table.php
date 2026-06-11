@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
 
             // PII
-            $table->string('name', 150);
+            $table->string('name', 150)->nullable();
             $table->string('email', 150)->index();
             $table->string('phone', 20)->index();
 

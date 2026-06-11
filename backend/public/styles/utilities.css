@@ -1,0 +1,742 @@
+@import url("./fonts2.css");
+
+:root {
+  --colorBg: #000;
+  --colorFt: #f8f5f0;
+
+  --wrapperWidth: 468px;
+  --wrapperWidthLg: 1820px;
+  --wrapperWidthSm: 1326px;
+
+  --mobilePadding: 10px;
+  --padding: 20px;
+
+  --overlayColor: #1a3362;
+
+  --leftPadding: max(
+    var(--padding),
+    calc((100dvw - var(--wrapperWidth) + 2 * var(--padding)) / 2)
+  );
+}
+
+@media screen and (max-width: 620px) {
+  :root {
+    --padding: var(--mobilePadding);
+  }
+}
+
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+blockquote,
+figure {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  position: relative;
+  max-width: 2500px;
+  margin: 0 auto;
+  font-family: "helvetica-neue-world", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+ul.flex > li:last-of-type {
+  margin-right: 0 !important;
+}
+ul.flex.col > li:last-of-type {
+  margin-bottom: 0 !important;
+}
+ul.flex.border > li:last-of-type {
+  border-right: 0 !important;
+}
+ul.flex.col.border > li:last-of-type {
+  border-bottom: 0 !important;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+address {
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+[style*="--aspect-ratio"] > :first-child {
+  width: 100%;
+}
+[style*="--aspect-ratio"] > img {
+  height: auto;
+}
+@supports (--custom: property) {
+  [style*="--aspect-ratio"] {
+    position: relative;
+  }
+  [style*="--aspect-ratio"]::before {
+    content: "";
+    display: block;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
+  [style*="--aspect-ratio"] > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+/* outlines */
+
+/* article:has(.main-link):focus-within,
+:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.js-focus,
+article .main-link,
+:focus:not(:focus-visible) {
+  outline: none;
+} */
+
+/*  containers */
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex.col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.flex.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+/*  general */
+
+/*  κλείδωμα του scroll στο background
+    σε περίπτωση που έχουμε ένα στοιχείο
+    που καλύπτει όλη την οθόνη */
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+/*  κεντράρισμα εικόνας*/
+.img-center {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+/*  κρύψιμο οριζόντιας μπάρας κύλισης*/
+.scrollbar-hide {
+  overflow-x: scroll;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.pntr {
+  cursor: pointer;
+}
+
+.main-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  clip: auto;
+  overflow: visible;
+  background: #fff;
+  color: #000;
+  padding: 5px;
+  z-index: 10;
+}
+
+.skip-link {
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/* wrappers */
+
+.wrapper {
+  max-width: var(--wrapperWidth);
+  padding-inline: var(--padding);
+  margin-inline: auto;
+}
+.wrapper.sm {
+  max-width: var(--wrapperWidthSm);
+}
+.wrapper.lg {
+  max-width: var(--wrapperWidthLg);
+}
+
+.wrapper.pr-0 {
+  max-width: unset;
+  padding-inline: var(--leftPadding) 0;
+}
+
+/* grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 4), minmax(0, 1fr));
+  grid-gap: var(--gridGapRow, 32px) var(--gridGap, 24px);
+}
+
+.grid.template-grid {
+  --columns: 12;
+}
+@media screen and (max-width: 1020px) {
+  .grid {
+    --columns: 3;
+  }
+  .grid.tab-4 {
+    --columns: 4;
+  }
+  .grid.tab-2 {
+    --columns: 2;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .grid,
+  .grid.mob-1 {
+    --columns: 1 !important;
+  }
+  .grid.mob-2 {
+    --columns: 2 !important;
+  }
+}
+
+/* cards */
+
+/* card general */
+
+.card {
+  position: relative;
+}
+
+.card.row {
+  display: flex;
+  gap: 2rem;
+}
+.card.row > div {
+  width: 50%;
+}
+.card.row.img-sm > div {
+  flex-grow: 1;
+}
+
+.card.cover {
+  display: grid;
+}
+.card.cover > div {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+
+/* card-image */
+
+.card-image {
+  margin-bottom: 1rem;
+  aspect-ratio: 16/9;
+}
+.card.row .card-image {
+  margin-bottom: 0;
+  height: fit-content;
+}
+.card.row.img-r .card-image {
+  order: 2;
+}
+.card.row.img-sm .card-image {
+  width: 120px;
+  flex-grow: 0;
+}
+.card.cover .card-image {
+  z-index: -1;
+  margin-bottom: 0;
+}
+
+/* card info general */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card.cover .card-info {
+  display: flex;
+  padding: 2rem;
+}
+.card.cover.center .card-info {
+  align-items: center;
+  justify-content: center;
+}
+.card.cover.bottom .card-info {
+  justify-content: flex-end;
+}
+
+/* card  category */
+
+.card .category {
+  order: -1;
+  margin-bottom: 0.5rem;
+}
+
+/* card  */
+
+.card-meta a,
+.card .tag-list > li a {
+  z-index: 20;
+  position: relative;
+  display: inline-block;
+}
+
+/* card info title */
+
+.card .title {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+/* card info lead */
+
+.card .lead {
+  font-size: 1.25rem;
+}
+.card .lead > p:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
+
+/* card-tags */
+
+.card .tag-list {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* section headers */
+
+.section-header {
+  padding-block: 1rem;
+  margin-bottom: 2rem;
+}
+.section-header.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-header h2 {
+  font-size: 2.5rem;
+}
+
+.section-header.multi-line {
+  flex-wrap: wrap;
+  border-bottom: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header.multi-line > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-header.multi-line > .top-row {
+  margin-bottom: 0.5rem;
+}
+.section-header.multi-line > .top-row.border {
+  border-bottom: 1px solid #fff;
+}
+
+/*  socials */
+
+.social {
+  /* --socialWidth: 40px;
+  --socialHeight: 40px; */
+}
+
+.social ul {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: var(--socialGap, 2rem);
+}
+.social li {
+  width: var(--socialWidth, 40px);
+  height: var(--socialHeight, 40px);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 0.3s;
+}
+
+.social.border li {
+  border: 1px solid #000;
+  background-size: 50%;
+  padding: 5px;
+}
+
+.social.white li {
+  filter: invert(1);
+}
+
+.social.round li {
+  border-radius: 50%;
+  background-size: 50%;
+  background-color: #fff;
+}
+
+.social ul li.pin {
+  background-image: url(../assets/icons/social_icons/pin.svg);
+}
+.social ul li.fb {
+  background-image: url(../assets/icons/social_icons/fb.svg);
+  /* background-size: 25%; */
+}
+.social ul li.tw {
+  background-image: url(../assets/icons/social_icons/tw.svg);
+  /* background-size:5px 10px; */
+}
+.social ul li.yt {
+  background-image: url(../assets/icons/social_icons/yt.svg);
+}
+.social ul li.ig {
+  background-image: url(../assets/icons/social_icons/ig.svg);
+}
+.social ul li.x {
+  background-image: url(../assets/icons/social_icons/x.svg);
+}
+.social ul li.ln {
+  background-image: url(../assets/icons/social_icons/ln.svg);
+}
+.social ul li.tt {
+  background-image: url(../assets/icons/social_icons/tt.svg);
+}
+.social ul li.ml {
+  background-image: url(../assets/icons/social_icons/mail.svg);
+}
+.social ul li.sf {
+  background-image: url(../assets/icons/social_icons/sf.svg);
+}
+.social ul li.ap {
+  background-image: url(../assets/icons/social_icons/ap.svg);
+}
+.social ul li.rss {
+  background-image: url(../assets/icons/social_icons/rss.svg);
+  /* background-size:20px 20px; */
+}
+.social ul li.wup {
+  background-image: url(../assets/icons/social_icons/wup.svg);
+  background-size: contain;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.social.border li.fb,
+.social.round li.fb {
+  background-size: 25%;
+}
+
+.social ul li > a {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+/* .social ul li:hover {
+  filter: brightness(0) invert(1);
+} */
+
+.darkmode .social ul li {
+  filter: invert(1);
+}
+
+@media screen and (max-width: 1020px) {
+  .social ul {
+    gap: var(--socialGap, 1.5rem);
+  }
+  .social li {
+    width: var(--socialWidth, 30px);
+    height: var(--socialHeight, 30px);
+  }
+}
+@media screen and (max-width: 520px) {
+  .social ul {
+    gap: var(--socialGap, 1rem);
+  }
+  .social li {
+    width: var(--socialWidth, 20px);
+    height: var(--socialHeight, 20px);
+  }
+}
+
+/* main header and menus */
+
+.fixed-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding-block: 1rem;
+  background-color: var(--colorBg);
+  z-index: 100;
+}
+
+/* form */
+
+.input-box {
+  width: 100%;
+  position: relative;
+}
+
+/* custom checkbox */
+
+.custom-checkbox {
+  position: relative;
+  /* max-width: 300px; */
+  margin-inline: auto;
+}
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox label {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  gap: 13px;
+  font-size: 18px;
+  line-height: 20px;
+  color: var(--colorSecBlue);
+}
+
+.custom-checkbox label a {
+  display: inline;
+}
+
+.custom-checkbox .box {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #4871b7;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-checkbox input:focus-visible + label .box {
+  /* outline: 2px solid red; */
+  outline-offset: 2px;
+}
+
+.custom-checkbox input + label .box::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.custom-checkbox input:checked + label .box::after {
+  left: 3px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  background-color: #4871b7;
+}
+
+/* barba */
+
+/* Κατάσταση κατά τη διάρκεια του animation (τόσο όταν φεύγει όσο και όταν έρχεται η σελίδα) */
+.barba-leave-active,
+.barba-enter-active {
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* Κατάσταση στην οποία θέλουμε να καταλήξει η παλιά σελίδα (0% opacity) 
+   και από την οποία ξεκινάει η νέα σελίδα */
+.barba-leave-to,
+.barba-enter-from {
+  opacity: 0;
+}
+
+/* Αρχική κατάσταση: Το ορθογώνιο καλύπτει όλη την οθόνη αλλά είναι "κρυμμένο" πιο πάνω (top: -100%) */
+.wipe-overlay {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: calc(100dvh - 111px);
+  background-color: var(--overlayColor);
+  z-index: 9999; /* Να είναι πάνω από όλα τα στοιχεία */
+  display: grid;
+  place-content: center;
+}
+
+@media screen and (max-height: 600px) {
+  .wipe-overlay {
+    height: calc(100dvh - 82px);
+  }
+}
+
+body.question-1 {
+  --overlayColor: #2cb670;
+}
+body.question-2 {
+  --overlayColor: #d72390;
+}
+body.question-2 {
+  --overlayColor: #d7bc26;
+}
+
+.wipe-overlay .logo-image {
+  filter: brightness(0) invert(1);
+}
+
+/* 1. Animation: Κατεβαίνει από πάνω προς τα κάτω και μένει εκεί */
+@keyframes wipeIn {
+  0% {
+    top: -100%;
+  }
+  80% {
+    top: 0;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+/* 2. Animation: Φεύγει από κάτω προς τα πάνω (ξεκινώντας από το 0) */
+@keyframes wipeOut {
+  0% {
+    top: 0;
+  }
+  20% {
+    top: 0;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+/* Αυτές τις κλάσεις θα τις ενεργοποιούμε μέσω JavaScript */
+.wipe-overlay.is-loading {
+  animation: wipeIn 1s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+
+.wipe-overlay.is-loaded {
+  animation: wipeOut 1s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}

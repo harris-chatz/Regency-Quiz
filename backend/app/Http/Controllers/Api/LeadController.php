@@ -23,13 +23,13 @@ class LeadController extends Controller
         $data = $request->validated();
 
         $lead = Lead::create([
-            'name'  => $data['name'],
+            'name'  => $data['name'] ?? null,
             'email' => mb_strtolower($data['email']),
             'phone' => $data['phone'],
 
             'age_consent'        => $data['age_consent'],
-            'terms_consent'      => $data['terms_consent'],
-            'marketing_consent'  => $data['marketing_consent'],
+            'terms_consent'      => $data['terms_consent'] ?? false,
+            'marketing_consent'  => $data['marketing_consent'] ?? false,
 
             'persona_color'      => $data['persona_color'],
             'has_visited_casino' => $data['has_visited_casino'] ?? null,
