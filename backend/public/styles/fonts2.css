@@ -1,74 +1,33 @@
+/* Bubbleboddy Neue — μία οικογένεια, ένα βάρος ανά .ttf */
 @font-face {
   font-family: "Bubbleboddy";
-
-  src: url("../assets/fonts/BubbleboddyNeue/BubbleboddyNeue-Regular.ttf")
-    format("truetype");
-
-  font-weight: 400;
-  font-style: normal;
-
-  font-display: swap;
-}
-@font-face {
-  font-family: "Bubbleboddy-Bold";
-
-  src: url("../assets/fonts/BubbleboddyNeue/BubbleboddyNeue-Bold.ttf")
-    format("truetype");
-
-  font-weight: 700;
-  font-style: normal;
-
-  font-display: swap;
-}
-@font-face {
-  font-family: "Bubbleboddy-Light";
-
   src: url("../assets/fonts/BubbleboddyNeue/BubbleboddyNeue-Light.ttf")
     format("truetype");
-
   font-weight: 300;
   font-style: normal;
-
   font-display: swap;
 }
 @font-face {
-  font-family: "Bubbleboddy-ExtraBold";
-
+  font-family: "Bubbleboddy";
+  src: url("../assets/fonts/BubbleboddyNeue/BubbleboddyNeue-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bubbleboddy";
+  src: url("../assets/fonts/BubbleboddyNeue/BubbleboddyNeue-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bubbleboddy";
   src: url("../assets/fonts/BubbleboddyNeue/BubbleboddyNeue-ExtraBold.ttf")
     format("truetype");
-
-  font-weight: 900;
+  font-weight: 800;
   font-style: normal;
-
   font-display: swap;
 }
-
-/* @font-face {
-  font-family: "helvetica-neue-world";
-  src:
-    url("https://use.typekit.net/af/ba837d/0000000000000000774750c6/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-      format("woff2"),
-    url("https://use.typekit.net/af/ba837d/0000000000000000774750c6/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-      format("woff"),
-    url("https://use.typekit.net/af/ba837d/0000000000000000774750c6/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-      format("opentype");
-  font-display: auto;
-  font-style: normal;
-  font-weight: 400;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: "helvetica-neue-world-bold";
-  src:
-    url("https://use.typekit.net/af/09a170/00000000000000007739b2df/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-      format("woff2"),
-    url("https://use.typekit.net/af/09a170/00000000000000007739b2df/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-      format("woff"),
-    url("https://use.typekit.net/af/09a170/00000000000000007739b2df/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-      format("opentype");
-  font-display: auto;
-  font-style: normal;
-  font-weight: 700;
-  font-stretch: normal;
-} */
