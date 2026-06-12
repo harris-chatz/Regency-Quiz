@@ -176,7 +176,7 @@ function setUp() {
               box.classList.add("msg-on");
               console.log("timer set");
               autoRedirectTimer = setTimeout(function () {
-                barba.go("./terms.html");
+                barba.go("/terms");
               }, 3000);
             }, 400);
           }
@@ -187,7 +187,7 @@ function setUp() {
 
           btn.classList.add("active");
           setTimeout(function () {
-            barba.go("./exit.html");
+            barba.go("/exit");
           }, 1500);
         }
       }),
@@ -195,7 +195,7 @@ function setUp() {
 
     startBtn.addEventListener("click", function () {
       clearTimeout(autoRedirectTimer);
-      barba.go("./terms.html");
+      barba.go("/terms");
     });
   }
 
@@ -227,7 +227,7 @@ function setUp() {
       termsBtn.addEventListener("click", function () {
         console.log("click");
         if (checkTerms2.checked) {
-          barba.go("./question-1.html");
+          barba.go("/question-1");
         } else {
           console.log("warning");
           const warningMsg = document.querySelector(".terms-container .alert");
@@ -414,11 +414,11 @@ function getCurrentNamespace() {
 
 // μετατροπή namespace σε link
 function nameSpaceToLink(namespace, answer) {
-  if (namespace === "question-1") return "./question-2.html";
-  if (namespace === "question-2") return "./question-3.html";
-  if (answer.classList.contains("verde")) return "./result-1.html";
-  if (answer.classList.contains("giallo")) return "./result-2.html";
-  if (answer.classList.contains("rosa")) return "./result-3.html";
+  if (namespace === "question-1") return "/question-2";
+  if (namespace === "question-2") return "/question-3";
+  if (answer.classList.contains("verde")) return "/result-1";
+  if (answer.classList.contains("giallo")) return "/result-2";
+  if (answer.classList.contains("rosa")) return "/result-3";
 }
 
 let autoRedirectTimer = null;
