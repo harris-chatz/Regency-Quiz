@@ -152,33 +152,15 @@ barba.init({
 function setUp() {
   let autoRedirectTimer = null;
 
-  // landing
-
-  const landingPage = document.querySelector(".landing-content");
-
-  if (landingPage) {
-    // Νέο funnel ξεκινά — καθαρίζω το παλιό quiz state
-    clearQuizState();
-    setQuizState({ started_at: new Date().toISOString() });
-
-    const landingLogo = document.querySelector(".game-logo");
-    const landingImg = document.querySelector(".landing-img");
-    // const landingMsg = document.querySelector(".landing-msg");
-    const landingBtn = document.querySelector(".landing-panel-btn");
-
-    setTimeout(function () {
-      landingPage.classList.add("active");
-      setTimeout(function () {
-        landingBtn.classList.add("on");
-      }, 1500);
-    }, 1000);
-  }
-
-  // intro buttons
+  // intro — αρχή του funnel
 
   const introBtns = document.querySelectorAll(".intro-btn");
 
   if (introBtns.length > 0) {
+    // Νέο funnel ξεκινά — καθαρίζω το παλιό quiz state
+    clearQuizState();
+    setQuizState({ started_at: new Date().toISOString() });
+
     const startBtn = document.querySelector(".start-btn");
     const errorBtn = document.querySelector(".error-msg");
     introBtns.forEach((btn) =>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\LeadsAdminController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => redirect('/landing.html'));
+Route::get('/', fn () => redirect('/intro.html'));
 
 Route::middleware('admin.basic')
     ->prefix('admin')
