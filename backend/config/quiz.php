@@ -47,7 +47,7 @@ return [
         'sender_id'     => env('APIFON_SENDER_ID', 'MONT PARNES'),
         'sms_template'  => env(
             'APIFON_SMS_TEMPLATE',
-            'Συγχαρητήρια! Ο κωδικός εξαργύρωσής σου είναι {code}. Δες περισσότερα: {url}'
+            'Κέρδισες στο New Regs Game! Δες τις οδηγίες για το δώρο σου και διεκδίκησε μοναδικά προνόμια εδώ: {url}'
         ),
         'country_code'  => env('APIFON_COUNTRY_CODE', '30'),
         'timeout'       => (int) env('APIFON_TIMEOUT', 10),

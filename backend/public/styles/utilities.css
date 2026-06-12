@@ -50,6 +50,11 @@ body {
   font-family: "helvetica-neue-world", sans-serif;
   font-weight: 400;
   font-style: normal;
+  padding-bottom: 225px;
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  overflow-x: hidden;
 }
 
 img {
@@ -69,16 +74,10 @@ ol {
 }
 
 ul.flex > li:last-of-type {
-  margin-right: 0 !important;
+  margin-right: 0;
 }
 ul.flex.col > li:last-of-type {
-  margin-bottom: 0 !important;
-}
-ul.flex.border > li:last-of-type {
-  border-right: 0 !important;
-}
-ul.flex.col.border > li:last-of-type {
-  border-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 input {
@@ -94,7 +93,7 @@ address {
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -472,6 +471,10 @@ article .main-link,
   transition: all 0.3s;
 }
 
+.social li:hover {
+  transform: scale(1.1);
+}
+
 .social.border li {
   border: 1px solid #000;
   background-size: 50%;
@@ -493,7 +496,7 @@ article .main-link,
 }
 .social ul li.fb {
   background-image: url(../assets/icons/social_icons/fb.svg);
-  /* background-size: 25%; */
+  background-size: 40%;
 }
 .social ul li.tw {
   background-image: url(../assets/icons/social_icons/tw.svg);
@@ -504,6 +507,7 @@ article .main-link,
 }
 .social ul li.ig {
   background-image: url(../assets/icons/social_icons/ig.svg);
+  background-size: 80%;
 }
 .social ul li.x {
   background-image: url(../assets/icons/social_icons/x.svg);
@@ -678,8 +682,9 @@ article .main-link,
   position: fixed;
   top: -100%;
   left: 0;
-  width: 100%;
-  height: calc(100dvh - 111px);
+  width: 100dvw;
+  /* height: calc(100dvh - 111px); */
+  height: 100dvh;
   background-color: var(--overlayColor);
   z-index: 9999; /* Να είναι πάνω από όλα τα στοιχεία */
   display: grid;

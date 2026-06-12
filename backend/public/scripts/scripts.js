@@ -356,6 +356,69 @@ function setUp() {
       }
     });
   }
+
+  setUpSocialShare();
+}
+
+// -----------------------------------------------------------------------------
+// Social share buttons — Facebook / Instagram / Email
+// Δίνει λειτουργικά links στα social κουμπιά ώστε να ανοίγει το αντίστοιχο
+// share dialog για τον σύνδεσμο του παιχνιδιού.
+// -----------------------------------------------------------------------------
+function setUpSocialShare() {
+  const shareUrl = window.location.origin + "/";
+  const shareText = "Παίξε το New Regs Game και διεκδίκησε μοναδικά προνόμια!";
+  const encode = encodeURIComponent;
+
+  document.querySelectorAll(".share-wrapper").forEach(function (wrapper) {
+    const fbLink = wrapper.querySelector("li.fb > a");
+    const igLink = wrapper.querySelector("li.ig > a");
+    const mailLink = wrapper.querySelector("li.ml > a");
+
+    if (fbLink) {
+      fbLink.href =
+        "https://www.facebook.com/sharer/sharer.php?u=" + encode(shareUrl);
+      fbLink.target = "_blank";
+      fbLink.rel = "noopener noreferrer";
+    }
+
+    if (mailLink) {
+      mailLink.href =
+        "mailto:?subject=" +
+        encode("New Regs Game") +
+        "&body=" +
+        encode(shareText + " " + shareUrl);
+    }
+
+    if (igLink) {
+      // Το Instagram δεν διαθέτει direct web share link. Σε κινητά ανοίγουμε
+      // το native share sheet· διαφορετικά αντιγράφουμε τον σύνδεσμο.
+      igLink.href = "https://www.instagram.com/";
+      igLink.target = "_blank";
+      igLink.rel = "noopener noreferrer";
+      igLink.addEventListener("click", function (e) {
+        if (navigator.share) {
+          e.preventDefault();
+          navigator
+            .share({ title: "New Regs Game", text: shareText, url: shareUrl })
+            .catch(function () {});
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+          e.preventDefault();
+          navigator.clipboard
+            .writeText(shareUrl)
+            .then(function () {
+              alert(
+                "Ο σύνδεσμος αντιγράφηκε! Επικόλλησέ τον στο Instagram story ή μήνυμα.",
+              );
+              window.open("https://www.instagram.com/", "_blank", "noopener");
+            })
+            .catch(function () {
+              window.open("https://www.instagram.com/", "_blank", "noopener");
+            });
+        }
+      });
+    }
+  });
 }
 
 //  Επιστρέφει το τρέχον namespace του barba
